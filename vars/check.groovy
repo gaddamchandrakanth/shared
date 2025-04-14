@@ -4,6 +4,6 @@ def gitDownload(repo)
 }
 def gitBuild
 {
-  sh 'mvn package'
+  sh "mvn package"
 }
 

@@ -1,0 +1,58 @@
+@Library('one')_
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('download')
+        {
+            steps
+            {
+                script
+                {
+                    check.gitDownload("maven")
+                }
+            }
+        }
+        stage('build')
+        {
+            steps
+            {
+                script
+                {
+                    check.gitBuild()
+                }
+            }
+        }
+        stage('deploy')
+        {
+            steps
+            {
+                script
+                {
+                    check.gitdeploy("sharedlibrary","172.31.30.165","test")
+                }
+            }
+        }
+        stage('testing')
+        {
+            steps
+            {
+                script
+                {
+                    check.gittesting("functionaltesting")
+                }
+            }
+        }
+        stage('delivery')
+        {
+            steps
+            {
+                script
+                {
+                    check.gitdelivery("sharedlibrary","172.31.19.177","two")
+                }
+            }
+        }
+    }
+}

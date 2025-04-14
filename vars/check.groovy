@@ -8,7 +8,7 @@ def gitBuild()
 }
 def gitdeploy(jobname,ip,context)
 {
-  sh "scp /var/lib/jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.47.202:/var/lib/tomcat10/webapps/check.war"
+  sh "scp /var/lib/jenkins/workspace/${jobname}/webapp/target/webapp.war ubuntu@${ip}:/var/lib/tomcat10/webapps/${context}.war"
 }
 def gittesting(repo)
 {
